@@ -11,7 +11,7 @@ splunk/
 |  |-- inputs.conf
 |  |-- props.conf
 |-- dashboards/
-|  |-- operations_black_beacon.xml
+|  |-- operation_black_beacon.xml
 |-- detections/
 |-- hunts/
    

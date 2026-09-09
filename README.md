@@ -224,7 +224,7 @@ The dashboard provides six investigation views covering:
 
 Dashboard source:
 
-**[`splunk/dashboard/`](splunk/dashboard/)**
+**[`splunk/dashboards/`](splunk/dashboards/)**
 
 ### Dashboard Views
 
@@ -516,7 +516,7 @@ operation-black-beacon/
 |-- splunk/
 |   |-- README.md
 |   |-- configs/
-|   |-- dashboard/
+|   |-- dashboards/
 |   |-- detections/
 |   |-- hunts/
 |-- automation/

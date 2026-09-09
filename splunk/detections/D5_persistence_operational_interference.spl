@@ -1,0 +1,10 @@
+index=black_beacon sourcetype=bb:scenario
+event_action IN ("privileged_command","account_created","backup_stopped")
+| stats dc(event_action) as action_types
+        values(event_action) as actions
+        values(host) as hosts
+        values(resource) as resources
+        values(severity) as severities
+        by user
+| where action_types>=2
+

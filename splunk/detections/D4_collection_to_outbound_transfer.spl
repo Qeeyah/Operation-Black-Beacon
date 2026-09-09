@@ -1,0 +1,12 @@
+index=black_beacon sourcetype=bb:scenario
+event_action IN ("archive_created","outbound_connection")
+| stats min(eval(if(event_action="archive_created",_time,null()))) as archive_time
+        min(eval(if(event_action="outbound_connection",_time,null()))) as outbound_time
+        values(resource) as resources
+        by user host
+| where isnotnull(archive_time) AND isnotnull(outbound_time)
+    AND outbound_time>=archive_time
+    AND (outbound_time-archive_time)<=900
+| eval gap_seconds=outbound_time-archive_time
+| convert ctime(archive_time) ctime(outbound_time)
+

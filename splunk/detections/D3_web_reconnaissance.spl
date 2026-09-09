@@ -1,0 +1,6 @@
+index=black_beacon (sourcetype=bb:web OR sourcetype=bb:scenario)
+| rex field=_raw "\"GET (?<nginx_path>\S+) HTTP"
+| eval path=coalesce(resource,nginx_path)
+| where path IN ("/admin","/.env","/login","/api/export")
+| stats count dc(path) as unique_paths values(path) as paths values(sourcetype) as sources by host
+| where count>=4 AND unique_paths>=3

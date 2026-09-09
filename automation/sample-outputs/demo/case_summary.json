@@ -1,0 +1,798 @@
+{
+  "case_id": "BB-DEMO-01",
+  "generated_at": "2026-09-09T16:18:31.530332+00:00",
+  "input_file": "automation/sample-inputs/alerts_sample.csv",
+  "event_count": 73,
+  "risk_score": 155,
+  "risk_level": "Critical",
+  "matched_conditions": [
+    "Eight or more failed logins for one user/source (+20)",
+    "Successful login after repeated failures (+30)",
+    "New application token or consent activity (+20)",
+    "Repository or CI/CD modification (+20)",
+    "Archive creation (+20)",
+    "Outbound connection after archive creation (+25)",
+    "New account, privileged action or backup stop (+20)"
+  ],
+  "activity_groups": [
+    {
+      "user": "admin.lara",
+      "host": "nova-app01",
+      "src_ip": "198.51.100.10",
+      "event_count": 3
+    },
+    {
+      "user": "admin.lara",
+      "host": "nova-app01",
+      "src_ip": "198.51.100.12",
+      "event_count": 1
+    },
+    {
+      "user": "admin.lara",
+      "host": "nova-app01",
+      "src_ip": "198.51.100.20",
+      "event_count": 4
+    },
+    {
+      "user": "admin.lara",
+      "host": "nova-app01",
+      "src_ip": "198.51.100.21",
+      "event_count": 4
+    },
+    {
+      "user": "analyst.qeeyah",
+      "host": "nova-app01",
+      "src_ip": "192.0.2.40",
+      "event_count": 1
+    },
+    {
+      "user": "analyst.qeeyah",
+      "host": "nova-app01",
+      "src_ip": "198.51.100.10",
+      "event_count": 2
+    },
+    {
+      "user": "analyst.qeeyah",
+      "host": "nova-app01",
+      "src_ip": "198.51.100.11",
+      "event_count": 2
+    },
+    {
+      "user": "analyst.qeeyah",
+      "host": "nova-app01",
+      "src_ip": "198.51.100.12",
+      "event_count": 2
+    },
+    {
+      "user": "analyst.qeeyah",
+      "host": "nova-app01",
+      "src_ip": "198.51.100.20",
+      "event_count": 1
+    },
+    {
+      "user": "analyst.qeeyah",
+      "host": "nova-app01",
+      "src_ip": "198.51.100.21",
+      "event_count": 3
+    },
+    {
+      "user": "analyst.qeeyah",
+      "host": "nova-backup01",
+      "src_ip": "192.0.2.20",
+      "event_count": 2
+    },
+    {
+      "user": "analyst.qeeyah",
+      "host": "nova-backup01",
+      "src_ip": "192.0.2.40",
+      "event_count": 1
+    },
+    {
+      "user": "analyst.qeeyah",
+      "host": "nova-backup01",
+      "src_ip": "198.51.100.10",
+      "event_count": 1
+    },
+    {
+      "user": "analyst.qeeyah",
+      "host": "nova-ci01",
+      "src_ip": "198.51.100.12",
+      "event_count": 1
+    },
+    {
+      "user": "analyst.qeeyah",
+      "host": "nova-dev01",
+      "src_ip": "198.51.100.21",
+      "event_count": 1
+    },
+    {
+      "user": "backup.service",
+      "host": "nova-ci01",
+      "src_ip": "192.0.2.30",
+      "event_count": 1
+    },
+    {
+      "user": "ci.runner",
+      "host": "nova-app01",
+      "src_ip": "192.0.2.21",
+      "event_count": 1
+    },
+    {
+      "user": "ci.runner",
+      "host": "nova-app01",
+      "src_ip": "192.0.2.40",
+      "event_count": 1
+    },
+    {
+      "user": "ci.runner",
+      "host": "nova-app01",
+      "src_ip": "198.51.100.20",
+      "event_count": 1
+    },
+    {
+      "user": "ci.runner",
+      "host": "nova-backup01",
+      "src_ip": "198.51.100.12",
+      "event_count": 1
+    },
+    {
+      "user": "ci.runner",
+      "host": "nova-ci01",
+      "src_ip": "192.0.2.21",
+      "event_count": 1
+    },
+    {
+      "user": "ci.runner",
+      "host": "nova-ci01",
+      "src_ip": "192.0.2.30",
+      "event_count": 1
+    },
+    {
+      "user": "ci.runner",
+      "host": "nova-dev01",
+      "src_ip": "198.51.100.10",
+      "event_count": 1
+    },
+    {
+      "user": "ci.runner",
+      "host": "nova-dev01",
+      "src_ip": "198.51.100.21",
+      "event_count": 1
+    },
+    {
+      "user": "dev.auwal",
+      "host": "nova-app01",
+      "src_ip": "192.0.2.40",
+      "event_count": 1
+    },
+    {
+      "user": "dev.auwal",
+      "host": "nova-app01",
+      "src_ip": "198.51.100.10",
+      "event_count": 3
+    },
+    {
+      "user": "dev.auwal",
+      "host": "nova-app01",
+      "src_ip": "198.51.100.11",
+      "event_count": 1
+    },
+    {
+      "user": "dev.auwal",
+      "host": "nova-app01",
+      "src_ip": "198.51.100.12",
+      "event_count": 5
+    },
+    {
+      "user": "dev.auwal",
+      "host": "nova-app01",
+      "src_ip": "198.51.100.20",
+      "event_count": 1
+    },
+    {
+      "user": "dev.auwal",
+      "host": "nova-app01",
+      "src_ip": "198.51.100.21",
+      "event_count": 1
+    },
+    {
+      "user": "dev.auwal",
+      "host": "nova-ci01",
+      "src_ip": "198.51.100.12",
+      "event_count": 1
+    },
+    {
+      "user": "dev.auwal",
+      "host": "nova-ci01",
+      "src_ip": "198.51.100.21",
+      "event_count": 1
+    },
+    {
+      "user": "dev.victor",
+      "host": "nova-app01",
+      "src_ip": "192.0.2.20",
+      "event_count": 1
+    },
+    {
+      "user": "dev.victor",
+      "host": "nova-app01",
+      "src_ip": "198.51.100.77",
+      "event_count": 18
+    },
+    {
+      "user": "dev.victor",
+      "host": "nova-backup01",
+      "src_ip": "198.51.100.77",
+      "event_count": 1
+    },
+    {
+      "user": "dev.victor",
+      "host": "nova-ci01",
+      "src_ip": "198.51.100.77",
+      "event_count": 1
+    }
+  ],
+  "important_events": [
+    {
+      "time": "2026-09-01T09:07:09+01:00",
+      "event_action": "login",
+      "user": "dev.auwal",
+      "src_ip": "198.51.100.21",
+      "dest_ip": "192.0.2.40",
+      "host": "nova-ci01",
+      "resource": "developer-account",
+      "result": "failure",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T09:13:35+01:00",
+      "event_action": "login",
+      "user": "admin.lara",
+      "src_ip": "198.51.100.21",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "user-session",
+      "result": "success",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T09:14:16+01:00",
+      "event_action": "login",
+      "user": "dev.auwal",
+      "src_ip": "198.51.100.12",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "user-session",
+      "result": "failure",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T09:18:26+01:00",
+      "event_action": "login",
+      "user": "admin.lara",
+      "src_ip": "198.51.100.21",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "user-session",
+      "result": "success",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T09:23:06+01:00",
+      "event_action": "workflow_modified",
+      "user": "ci.runner",
+      "src_ip": "198.51.100.21",
+      "dest_ip": "192.0.2.40",
+      "host": "nova-dev01",
+      "resource": "approved-maintenance.yml",
+      "result": "success",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T09:23:36+01:00",
+      "event_action": "outbound_connection",
+      "user": "analyst.qeeyah",
+      "src_ip": "192.0.2.40",
+      "dest_ip": "203.0.113.10",
+      "host": "nova-backup01",
+      "resource": "updates.example:443",
+      "result": "success",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T09:24:54+01:00",
+      "event_action": "login",
+      "user": "analyst.qeeyah",
+      "src_ip": "198.51.100.21",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "user-session",
+      "result": "success",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T09:25:01+01:00",
+      "event_action": "login",
+      "user": "dev.auwal",
+      "src_ip": "198.51.100.21",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "developer-account",
+      "result": "failure",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T09:27:17+01:00",
+      "event_action": "login",
+      "user": "dev.auwal",
+      "src_ip": "198.51.100.10",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "user-session",
+      "result": "success",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T09:27:18+01:00",
+      "event_action": "outbound_connection",
+      "user": "analyst.qeeyah",
+      "src_ip": "192.0.2.20",
+      "dest_ip": "203.0.113.10",
+      "host": "nova-backup01",
+      "resource": "updates.example:443",
+      "result": "success",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T09:30:00+01:00",
+      "event_action": "login",
+      "user": "dev.victor",
+      "src_ip": "198.51.100.77",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "developer-account",
+      "result": "failure",
+      "severity": "medium"
+    },
+    {
+      "time": "2026-09-01T09:30:35+01:00",
+      "event_action": "login",
+      "user": "dev.victor",
+      "src_ip": "198.51.100.77",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "developer-account",
+      "result": "failure",
+      "severity": "medium"
+    },
+    {
+      "time": "2026-09-01T09:31:10+01:00",
+      "event_action": "login",
+      "user": "dev.victor",
+      "src_ip": "198.51.100.77",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "developer-account",
+      "result": "failure",
+      "severity": "medium"
+    },
+    {
+      "time": "2026-09-01T09:31:45+01:00",
+      "event_action": "login",
+      "user": "dev.victor",
+      "src_ip": "198.51.100.77",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "developer-account",
+      "result": "failure",
+      "severity": "medium"
+    },
+    {
+      "time": "2026-09-01T09:32:20+01:00",
+      "event_action": "login",
+      "user": "dev.victor",
+      "src_ip": "198.51.100.77",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "developer-account",
+      "result": "failure",
+      "severity": "medium"
+    },
+    {
+      "time": "2026-09-01T09:32:21+01:00",
+      "event_action": "login",
+      "user": "dev.auwal",
+      "src_ip": "198.51.100.11",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "user-session",
+      "result": "success",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T09:32:55+01:00",
+      "event_action": "login",
+      "user": "dev.victor",
+      "src_ip": "198.51.100.77",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "developer-account",
+      "result": "failure",
+      "severity": "medium"
+    },
+    {
+      "time": "2026-09-01T09:33:30+01:00",
+      "event_action": "login",
+      "user": "dev.victor",
+      "src_ip": "198.51.100.77",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "developer-account",
+      "result": "failure",
+      "severity": "medium"
+    },
+    {
+      "time": "2026-09-01T09:33:57+01:00",
+      "event_action": "login",
+      "user": "analyst.qeeyah",
+      "src_ip": "198.51.100.11",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "user-session",
+      "result": "success",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T09:34:05+01:00",
+      "event_action": "login",
+      "user": "dev.victor",
+      "src_ip": "198.51.100.77",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "developer-account",
+      "result": "failure",
+      "severity": "medium"
+    },
+    {
+      "time": "2026-09-01T09:34:40+01:00",
+      "event_action": "login",
+      "user": "dev.victor",
+      "src_ip": "198.51.100.77",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "developer-account",
+      "result": "failure",
+      "severity": "medium"
+    },
+    {
+      "time": "2026-09-01T09:35:15+01:00",
+      "event_action": "login",
+      "user": "dev.victor",
+      "src_ip": "198.51.100.77",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "developer-account",
+      "result": "failure",
+      "severity": "medium"
+    },
+    {
+      "time": "2026-09-01T09:35:50+01:00",
+      "event_action": "login",
+      "user": "dev.victor",
+      "src_ip": "198.51.100.77",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "developer-account",
+      "result": "failure",
+      "severity": "medium"
+    },
+    {
+      "time": "2026-09-01T09:36:02+01:00",
+      "event_action": "login",
+      "user": "dev.auwal",
+      "src_ip": "198.51.100.12",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "user-session",
+      "result": "success",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T09:36:25+01:00",
+      "event_action": "login",
+      "user": "dev.victor",
+      "src_ip": "198.51.100.77",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "developer-account",
+      "result": "failure",
+      "severity": "medium"
+    },
+    {
+      "time": "2026-09-01T09:37:12+01:00",
+      "event_action": "login",
+      "user": "analyst.qeeyah",
+      "src_ip": "198.51.100.10",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "user-session",
+      "result": "success",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T09:37:13+01:00",
+      "event_action": "login",
+      "user": "admin.lara",
+      "src_ip": "198.51.100.10",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "user-session",
+      "result": "success",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T09:38:00+01:00",
+      "event_action": "login",
+      "user": "dev.victor",
+      "src_ip": "198.51.100.77",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "developer-account",
+      "result": "success",
+      "severity": "high"
+    },
+    {
+      "time": "2026-09-01T09:41:00+01:00",
+      "event_action": "token_issued",
+      "user": "dev.victor",
+      "src_ip": "198.51.100.77",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "developer-api-token",
+      "result": "success",
+      "severity": "high"
+    },
+    {
+      "time": "2026-09-01T09:41:03+01:00",
+      "event_action": "outbound_connection",
+      "user": "ci.runner",
+      "src_ip": "192.0.2.21",
+      "dest_ip": "203.0.113.10",
+      "host": "nova-ci01",
+      "resource": "updates.example:443",
+      "result": "success",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T09:42:28+01:00",
+      "event_action": "login",
+      "user": "dev.auwal",
+      "src_ip": "198.51.100.10",
+      "dest_ip": "192.0.2.30",
+      "host": "nova-app01",
+      "resource": "developer-account",
+      "result": "failure",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T09:43:00+01:00",
+      "event_action": "consent_granted",
+      "user": "dev.victor",
+      "src_ip": "198.51.100.77",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "repo.read workflow.write",
+      "result": "success",
+      "severity": "high"
+    },
+    {
+      "time": "2026-09-01T09:46:25+01:00",
+      "event_action": "outbound_connection",
+      "user": "dev.auwal",
+      "src_ip": "192.0.2.40",
+      "dest_ip": "203.0.113.10",
+      "host": "nova-app01",
+      "resource": "updates.example:443",
+      "result": "success",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T09:50:00+01:00",
+      "event_action": "workflow_modified",
+      "user": "dev.victor",
+      "src_ip": "198.51.100.77",
+      "dest_ip": "192.0.2.30",
+      "host": "nova-ci01",
+      "resource": ".ci/deploy-learning-api.yml",
+      "result": "success",
+      "severity": "critical"
+    },
+    {
+      "time": "2026-09-01T09:50:45+01:00",
+      "event_action": "login",
+      "user": "admin.lara",
+      "src_ip": "198.51.100.20",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "user-session",
+      "result": "success",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T09:56:09+01:00",
+      "event_action": "login",
+      "user": "analyst.qeeyah",
+      "src_ip": "198.51.100.21",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "user-session",
+      "result": "success",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T09:56:49+01:00",
+      "event_action": "login",
+      "user": "admin.lara",
+      "src_ip": "198.51.100.20",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "user-session",
+      "result": "success",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T09:59:00+01:00",
+      "event_action": "privileged_command",
+      "user": "dev.victor",
+      "src_ip": "198.51.100.77",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "/etc/sudoers",
+      "result": "success",
+      "severity": "high"
+    },
+    {
+      "time": "2026-09-01T09:59:59+01:00",
+      "event_action": "outbound_connection",
+      "user": "analyst.qeeyah",
+      "src_ip": "192.0.2.20",
+      "dest_ip": "203.0.113.10",
+      "host": "nova-backup01",
+      "resource": "updates.example:443",
+      "result": "success",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T10:01:00+01:00",
+      "event_action": "account_created",
+      "user": "dev.victor",
+      "src_ip": "198.51.100.77",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "svc-beacon",
+      "result": "success",
+      "severity": "critical"
+    },
+    {
+      "time": "2026-09-01T10:02:46+01:00",
+      "event_action": "workflow_modified",
+      "user": "ci.runner",
+      "src_ip": "198.51.100.20",
+      "dest_ip": "192.0.2.21",
+      "host": "nova-app01",
+      "resource": "approved-maintenance.yml",
+      "result": "success",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T10:05:00+01:00",
+      "event_action": "archive_created",
+      "user": "dev.victor",
+      "src_ip": "198.51.100.77",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "learner_export.tar.gz",
+      "result": "success",
+      "severity": "high"
+    },
+    {
+      "time": "2026-09-01T10:05:09+01:00",
+      "event_action": "login",
+      "user": "admin.lara",
+      "src_ip": "198.51.100.20",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "user-session",
+      "result": "success",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T10:07:14+01:00",
+      "event_action": "login",
+      "user": "analyst.qeeyah",
+      "src_ip": "198.51.100.12",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "user-session",
+      "result": "failure",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T10:08:00+01:00",
+      "event_action": "outbound_connection",
+      "user": "dev.victor",
+      "src_ip": "192.0.2.20",
+      "dest_ip": "203.0.113.50",
+      "host": "nova-app01",
+      "resource": "203.0.113.50:443",
+      "result": "success",
+      "severity": "critical"
+    },
+    {
+      "time": "2026-09-01T10:08:13+01:00",
+      "event_action": "login",
+      "user": "admin.lara",
+      "src_ip": "198.51.100.10",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "user-session",
+      "result": "success",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T10:11:00+01:00",
+      "event_action": "backup_stopped",
+      "user": "dev.victor",
+      "src_ip": "198.51.100.77",
+      "dest_ip": "192.0.2.40",
+      "host": "nova-backup01",
+      "resource": "daily-learning-backup",
+      "result": "success",
+      "severity": "critical"
+    },
+    {
+      "time": "2026-09-01T10:14:05+01:00",
+      "event_action": "login",
+      "user": "dev.auwal",
+      "src_ip": "198.51.100.12",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "user-session",
+      "result": "success",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T10:15:52+01:00",
+      "event_action": "login",
+      "user": "dev.auwal",
+      "src_ip": "198.51.100.20",
+      "dest_ip": "192.0.2.20",
+      "host": "nova-app01",
+      "resource": "user-session",
+      "result": "failure",
+      "severity": "low"
+    },
+    {
+      "time": "2026-09-01T10:15:59+01:00",
+      "event_action": "outbound_connection",
+      "user": "ci.runner",
+      "src_ip": "192.0.2.30",
+      "dest_ip": "203.0.113.10",
+      "host": "nova-ci01",
+      "resource": "updates.example:443",
+      "result": "success",
+      "severity": "low"
+    }
+  ],
+  "recommended_analyst_actions": [
+    "Review authentication and identity telemetry.",
+    "Validate application token and consent activity.",
+    "Review repository and CI/CD changes.",
+    "Preserve relevant logs and case evidence.",
+    "Consider credential reset and session revocation.",
+    "Review and revoke unauthorised application tokens.",
+    "Validate newly created accounts and privileged changes.",
+    "Confirm backup integrity and recovery readiness.",
+    "Investigate outbound connection activity."
+  ]
+}

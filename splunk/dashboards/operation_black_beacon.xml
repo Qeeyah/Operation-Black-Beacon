@@ -1,0 +1,159 @@
+<dashboard version="1.1" theme="light">
+  <label>Operation Black Beacon</label>
+  <description>operation_black_beacon</description>
+  <row>
+    <panel>
+      <chart>
+        <title>Event Volume by Category and Result</title>
+        <search>
+          <query>index=black_beacon sourcetype=bb:scenario
+| eval event_series=event_category." / ".result
+| timechart span=5m count by event_series limit=20 useother=f</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="charting.chart">line</option>
+        <option name="charting.drilldown">none</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>Authentication Failures and Successes</title>
+        <search>
+          <query>index=black_beacon sourcetype=bb:scenario
+event_category=identity event_action=login
+| stats
+    count(eval(result="failure")) as failures
+    count(eval(result="success")) as successes
+    count as total_events
+    by user src_ip
+| sort - failures - successes</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="charting.chart">bar</option>
+        <option name="charting.drilldown">none</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Suspicious Web Reconnaissance</title>
+        <search>
+          <query>index=black_beacon (sourcetype=bb:scenario OR sourcetype=bb:web)
+| rex field=_raw "^(?&lt;nginx_src_ip&gt;\S+)"
+| rex field=_raw "\"(?:GET|POST|HEAD)\s+(?&lt;nginx_path&gt;\S+)"
+| rex field=_raw "\"\s(?&lt;nginx_status&gt;\d{3})\s"
+| eval path=coalesce(
+    if(event_category="web",resource,null()),
+    nginx_path
+  )
+| eval source_ip=coalesce(src_ip,nginx_src_ip)
+| eval status_code=coalesce(
+    nginx_status,
+    if(event_category="web" AND result="failure","404",null()),
+    if(event_category="web" AND result="success","200",null())
+  )
+| where path IN ("/admin","/.env","/login","/api/export")
+| stats
+    count as requests
+    values(status_code) as status_codes
+    values(sourcetype) as telemetry_source
+    by source_ip path
+| sort - requests</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Linux Account and Collection Activity</title>
+        <search>
+          <query>index=black_beacon sourcetype=bb:scenario event_category=linux
+| where event_action IN (
+    "privileged_command",
+    "account_created",
+    "process_start",
+    "archive_created"
+  )
+| table
+    _time
+    user
+    host
+    event_action
+    application
+    resource
+    result
+    severity
+| sort _time</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Repository and CI/CD</title>
+        <search>
+          <query>index=black_beacon sourcetype=bb:scenario
+(event_category="cloud_application" OR event_category="repository_ci")
+| stats
+    count as events
+    values(event_action) as actions
+    values(application) as applications
+    values(resource) as resources
+    values(result) as results
+    values(severity) as severities
+    by user
+| sort - events</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Telemetry Risk by Host and User</title>
+        <search>
+          <query>index=black_beacon sourcetype=bb:scenario
+(severity="medium" OR severity="high" OR severity="critical")
+| eval risk_points=case(
+    severity="critical",40,
+    severity="high",25,
+    severity="medium",10,
+    1=1,0
+)
+| stats
+    sum(risk_points) as telemetry_risk
+    count as notable_events
+    values(event_action) as observed_actions
+    values(severity) as severities
+    by user host
+| eval risk_level=case(
+    telemetry_risk&gt;=90,"Critical",
+    telemetry_risk&gt;=60,"High",
+    telemetry_risk&gt;=30,"Medium",
+    1=1,"Low"
+)
+| sort - telemetry_risk</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>

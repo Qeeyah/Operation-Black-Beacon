@@ -1,0 +1,16 @@
+index=black_beacon sourcetype=bb:scenario
+(event_category="cloud_application" OR event_category="repository_ci")
+| eval id_event=if(event_action IN ("token_issued","consent_granted"),1,0)
+| eval cicd_change=if(event_action="workflow_modified",1,0)
+| stats sum(id_event) as identity_events
+        sum(cicd_change) as cicd_changes
+        min(eval(if(id_event=1,_time,null()))) as first_identity
+        min(eval(if(cicd_change=1,_time,null()))) as first_change
+        values(application) as applications
+        values(resource) as resources
+        by user
+| where identity_events>=1 AND cicd_changes>=1
+    AND first_change>=first_identity
+    AND (first_change-first_identity)<=1800
+| eval gap_seconds=first_change-first_identity
+| convert ctime(first_identity) ctime(first_change)

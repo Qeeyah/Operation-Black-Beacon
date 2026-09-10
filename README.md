@@ -101,7 +101,7 @@ flowchart TD
 
 # Synthetic Incident Dataset
 
-Created a custom Python generator to reproduce security dataset containing:
+Created a custom Python generator to produce a reproducible security dataset containing:
 
 | Classification     |  Events |
 | ------------------ | ------: |
@@ -304,7 +304,7 @@ CI/CD modification
 
 MITRE ATT&CK:
 
-* **T1528 - Application Access Token**
+* **T1528 - Steal Application Access Token**
 
 ---
 
@@ -392,7 +392,7 @@ An outbound connection following archive creation supports an exfiltration hypot
 | --------- | ------------------------------ | -------------------------------- | ----------- |
 | T1110.001 | Password Guessing              | Repeated authentication failures | D1 / Hunt 1 |
 | T1078     | Valid Accounts                 | Success after repeated failures  | D1 / Hunt 1 |
-| T1528     | Application Access Token       | Token activity                   | D2 / Hunt 1 |
+| T1528     | Steal Application Access Token       | Token activity                   | D2 / Hunt 1 |
 | T1136.001 | Local Account                  | `svc-beacon` creation            | D5 / Hunt 2 |
 | T1560.001 | Archive via Utility            | `learner_export.tar.gz`          | D4 / Hunt 2 |
 | T1490     | Inhibit System Recovery        | Backup interruption              | D5 / Hunt 2 |
@@ -465,20 +465,27 @@ Instead of hiding the result, the scoring logic was reviewed and redesigned.
 
 The original logic treated some isolated suspicious looking events independently.
 
-The tuned implementation places greater emphasis on:
+The tuned implementation uses a combination of behavioural thresholds, event ordering, and contextual relationships.
 
-* shared identity
-* shared host context
-* event ordering
-* temporal correlation
-* required attack thresholds
+The scoring logic considers;
+* eight or more failed logins from the same user/source
+* successful authentication occurring after repeated failures
+* application token or consent activity
+* repository or CI/CD modification
+* priviledeg activity, account creation, or backup interruption
 
-This moved the scoring model from:
+This moved the scoring approach beyund relying on isolated suspicious looking events.
 
 ```text
-Suspicious-looking event
+Observed security events
       |
-Add risk
+Behavioural thresholds
+      +
+Event ordering
+      +
+Selected user/host context
+      |
+Risk score
 ```
 
 toward:
@@ -639,6 +646,6 @@ Security automation should reduce repetitive work while preserving human judgeme
 
 Operation Black Beacon is a defensive security portfolio project built and tested in a controlled environment.
 
-All identities, indicators, and attack activity are fictional and uses documentation-only address ranges.
+All identities, indicators, and attack activity are fictional and use documentation-only address ranges.
 
 This repository is intended for authorised security monitoring, detection engineering, threat hunting, and incident investigation.
